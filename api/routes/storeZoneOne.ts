@@ -3,7 +3,7 @@ import axios from "axios";
 
 const router = Router();
 
-router.get("/soso/api/routes/storeZoneOne", async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   const { key, servicekey, type } = req.query;
 
   if (
