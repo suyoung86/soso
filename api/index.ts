@@ -10,9 +10,9 @@ app.get("/soso/api", async (req: Request, res: Response) => {
     req.query;
 
   if (
-    !key ||
-    !serviceKey ||
-    !type ||
+    !Key
+    !serviceKey
+    !type
   ) {
     return res.status(400).json({ message: "Missing required query params" });
   }
@@ -23,7 +23,7 @@ app.get("/soso/api", async (req: Request, res: Response) => {
   try {
     const response = await axios.get(api_url, {
       params: {
-        key,
+        Key,
         serviceKey,
         type,
       },
