@@ -1,3 +1,4 @@
+
 import express, { Request, Response } from "express";
 import axios from "axios";
 import cors from "cors";
@@ -6,7 +7,7 @@ const app = express();
 app.use(cors()); // CORS 에러 방지용
 
 
-app.get("/soso", async (req: Request, res: Response) => {
+app.get("/soso/storeZoneOne", async (req: Request, res: Response) => {
   const { key, servicekey, type } = req.query;
 
   if (
