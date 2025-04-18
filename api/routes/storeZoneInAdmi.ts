@@ -6,25 +6,17 @@ const router = Router();
 router.get("/", async (req: Request, res: Response) => {
   const { servicekey, divId, key, type } = req.query;
 
-  if (
-    !servicekey ||
-    !divId ||
-    !key ||
-    !type
-  ) {
+  if (!servicekey || !divId || !key || !type) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
-  const api_url = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneInAdmi";
+  const apiUrl = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneInAdmi";
 
   try {
-    const response = await axios.get(api_url, {
-      params: {
-        servicekey, divId, key, type
-      },
-      responseType: "text",
+    const response = await axios.get(apiUrl, {
+      params: { servicekey, divId, key, type },
+      responseType: "text"
     });
-
     res.set("Content-Type", "application/xml;charset=utf-8");
     res.send(response.data);
   } catch (error: any) {

@@ -6,23 +6,17 @@ const router = Router();
 router.get("/", async (req: Request, res: Response) => {
   const { servicekey, indsLclsCd } = req.query;
 
-  if (
-    !servicekey ||
-    !indsLclsCd
-  ) {
+  if (!servicekey || !indsLclsCd) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
-  const api_url = "http://apis.data.go.kr/B553077/api/open/sdsc2/largeUpjongList";
+  const apiUrl = "http://apis.data.go.kr/B553077/api/open/sdsc2/largeUpjongList";
 
   try {
-    const response = await axios.get(api_url, {
-      params: {
-        servicekey, indsLclsCd
-      },
-      responseType: "text",
+    const response = await axios.get(apiUrl, {
+      params: { servicekey, indsLclsCd },
+      responseType: "text"
     });
-
     res.set("Content-Type", "application/xml;charset=utf-8");
     res.send(response.data);
   } catch (error: any) {

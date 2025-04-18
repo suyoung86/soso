@@ -6,26 +6,17 @@ const router = Router();
 router.get("/", async (req: Request, res: Response) => {
   const { servicekey, radius, cx, cy, type } = req.query;
 
-  if (
-    !servicekey ||
-    !radius ||
-    !cx ||
-    !cy ||
-    !type
-  ) {
+  if (!servicekey || !radius || !cx || !cy || !type) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
-  const api_url = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneInRadius";
+  const apiUrl = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneInRadius";
 
   try {
-    const response = await axios.get(api_url, {
-      params: {
-        servicekey, radius, cx, cy, type
-      },
-      responseType: "text",
+    const response = await axios.get(apiUrl, {
+      params: { servicekey, radius, cx, cy, type },
+      responseType: "text"
     });
-
     res.set("Content-Type", "application/xml;charset=utf-8");
     res.send(response.data);
   } catch (error: any) {

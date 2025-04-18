@@ -6,26 +6,17 @@ const router = Router();
 router.get("/", async (req: Request, res: Response) => {
   const { serviceKey, resId, catId, signguCd, type } = req.query;
 
-  if (
-    !serviceKey ||
-    !resId ||
-    !catId ||
-    !signguCd ||
-    !type
-  ) {
+  if (!serviceKey || !resId || !catId || !signguCd || !type) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
-  const api_url = "http://apis.data.go.kr/B553077/api/open/sdsc2/baroApi";
+  const apiUrl = "http://apis.data.go.kr/B553077/api/open/sdsc2/baroApi";
 
   try {
-    const response = await axios.get(api_url, {
-      params: {
-        serviceKey, resId, catId, signguCd, type
-      },
-      responseType: "text",
+    const response = await axios.get(apiUrl, {
+      params: { serviceKey, resId, catId, signguCd, type },
+      responseType: "text"
     });
-
     res.set("Content-Type", "application/xml;charset=utf-8");
     res.send(response.data);
   } catch (error: any) {
