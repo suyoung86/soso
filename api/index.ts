@@ -40,7 +40,7 @@ app.get("/soso/api", async (req: Request, res: Response) => {
 
 app.listen(3000, () => {
   console.log(
-    "http://localhost:3000/soso?key=9174&erviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D
+    "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneOne/soso?key=9174&erviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D
 &type=xml"
   );
 });
