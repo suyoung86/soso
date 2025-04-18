@@ -39,5 +39,3 @@ app.listen(3000, () => {
     "서버 실행 중: http://localhost:3000/soso?key=9174&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D&type=xml"
   );
 });
-
- // http://192.168.250.113:3000
