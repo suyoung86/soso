@@ -6,13 +6,13 @@ const app = express();
 app.use(cors()); // CORS 에러 방지용 (프론트와 연동 시 필요)
 
 app.get("/soso", async (req: Request, res: Response) => {
-  const { key, serviceKey, type } =
-    req.query;
+  const { key, serviceKey, type } = req.query;
 
+  // ⛔ 조건 검증 부분 수정됨!
   if (
     !key ||
     !serviceKey ||
-    !type ||
+    !type
   ) {
     return res.status(400).json({ message: "Missing required query params" });
   }
@@ -40,7 +40,6 @@ app.get("/soso", async (req: Request, res: Response) => {
 
 app.listen(3000, () => {
   console.log(
-    "http://localhost:3000/soso?key=9174&erviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D
-&type=xml"
+    "서버 실행 중: http://localhost:3000/soso?key=YOUR_KEY&serviceKey=YOUR_SERVICE_KEY&type=xml"
   );
 });
