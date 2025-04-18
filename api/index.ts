@@ -1,31 +1,53 @@
-var express = require("express");
-var app = express();
+import express, { Request, Response } from "express";
+import axios from "axios";
+import cors from "cors";
 
-app.get("/weather", function (req: any, res: any) {
+const app = express();
+app.use(cors()); // CORS 에러 방지용 (프론트와 연동 시 필요)
+
+app.get("/weather", async (req: Request, res: Response) => {
   const { serviceKey, numOfRows, pageNo, base_date, base_time, nx, ny } =
     req.query;
 
-  var api_url =
-    "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?";
-  var request = require("request");
-  var options = {
-    url: api_url,
-    qs: { serviceKey, numOfRows, pageNo, base_date, base_time, nx, ny },
-  };
+  if (
+    !serviceKey ||
+    !numOfRows ||
+    !pageNo ||
+    !base_date ||
+    !base_time ||
+    !nx ||
+    !ny
+  ) {
+    return res.status(400).json({ message: "Missing required query params" });
+  }
 
-  request.get(options, function (error: any, response: any, body: any) {
-    if (!error && response.statusCode == 200) {
-      res.writeHead(200, { "Content-Type": "application/xml;charset=utf-8" });
-      res.end(body);
-    } else {
-      res.status(response.statusCode).end();
-      console.log("error = " + response.statusCode);
-    }
-  });
+  const api_url =
+    "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
+
+  try {
+    const response = await axios.get(api_url, {
+      params: {
+        serviceKey,
+        numOfRows,
+        pageNo,
+        base_date,
+        base_time,
+        nx,
+        ny,
+      },
+      responseType: "text", // XML 그대로 받아오기 위해 text 설정
+    });
+
+    res.set("Content-Type", "application/xml;charset=utf-8");
+    res.send(response.data);
+  } catch (error: any) {
+    console.error("API 호출 오류:", error?.response?.status || error.message);
+    res.status(error?.response?.status || 500).send("기상청 API 호출 오류");
+  }
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
   console.log(
-    "http://127.0.0.1:3000/weather?serviceKey=내 인증키&numOfRows=10&pageNo=1&base_date=20241028&base_time=0600&nx=61&ny=125 app listening on port 3000!"
+    "✅ 서버 실행됨: http://localhost:3000/weather?serviceKey=인증키&numOfRows=10&pageNo=1&base_date=20241028&base_time=0600&nx=61&ny=125"
   );
 });
