@@ -3,12 +3,17 @@ import axios from "axios";
 import cors from "cors";
 
 const app = express();
-app.use(cors()); 
+app.use(cors()); // CORS 에러 방지용 (프론트와 연동 시 필요)
 
-app.get("/soso/api", async (req: Request, res: Response) => {
-  const { key, serviceKey, type } = req.query; 
+app.get("/soso", async (req: Request, res: Response) => {
+  const { Key, serviceKey, type } =
+    req.query;
 
-  if (!key || !serviceKey || !type) {
+  if (
+    !key ||
+    !serviceKey ||
+    !type ||
+  ) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
@@ -22,7 +27,7 @@ app.get("/soso/api", async (req: Request, res: Response) => {
         serviceKey,
         type,
       },
-      responseType: "text", 
+      responseType: "text", // XML 그대로 받아오기 위해 text 설정
     });
 
     res.set("Content-Type", "application/xml;charset=utf-8");
@@ -34,6 +39,8 @@ app.get("/soso/api", async (req: Request, res: Response) => {
 });
 
 app.listen(3000, () => {
-  console.log("http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneOne/soso?key=9174&erviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D
-&type=xml");
+  console.log(
+    "http://localhost:3000/soso?key=9174&erviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D
+&type=xml"
+  );
 });
