@@ -1,44 +1,49 @@
-import express, { Request, Response } from "express";
-import axios from "axios";
+import express from "express";
 import cors from "cors";
 
+import storeZoneOneRouter from "../routes/storeZoneOne";
+import storeZoneInRadiusRouter from "../routes/storeZoneInRadius";
+import storeZoneInRectangleRouter from "../routes/storeZoneInRectangle";
+import storeZoneInAdmiRouter from "../routes/storeZoneInAdmi";
+import storeOneRouter from "../routes/storeOne";
+import storeListInBuildingRouter from "../routes/storeListInBuilding";
+import storeListInPnuRouter from "../routes/storeListInPnu";
+import storeListInDongRouter from "../routes/storeListInDong";
+import storeListInAreaRouter from "../routes/storeListInArea";
+import storeListInRadiusRouter from "../routes/storeListInRadius";
+import storeListInRectangleRouter from "../routes/storeListInRectangle";
+import storeListInPolygonRouter from "../routes/storeListInPolygon";
+import storeListInUpjongRouter from "../routes/storeListInUpjong";
+import storeListByDateRouter from "../routes/storeListByDate";
+import reqStoreModifyRouter from "../routes/reqStoreModify";
+import largeUpjongListRouter from "../routes/largeUpjongList";
+import middleUpjongListRouter from "../routes/middleUpjongList";
+import smallUpjongListRouter from "../routes/smallUpjongList";
+import baroApiRouter from "../routes/baroApi";
+
 const app = express();
-app.use(cors()); 
+app.use(cors());
 
-app.get("/soso", async (req: Request, res: Response) => {
-  const { key, serviceKey, type } = req.query;
-
-  if (
-    !key ||
-    !serviceKey ||
-    !type
-  ) {
-    return res.status(400).json({ message: "Missing required query params" });
-  }
-
-  const api_url =
-    "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneOne";
-
-  try {
-    const response = await axios.get(api_url, {
-      params: {
-        key,
-        serviceKey,
-        type,
-      },
-      responseType: "text", 
-    });
-
-    res.set("Content-Type", "application/xml;charset=utf-8");
-    res.send(response.data);
-  } catch (error: any) {
-    console.error("API 호출 오류:", error?.response?.status || error.message);
-    res.status(error?.response?.status || 500).send("소상공인 API 호출 오류");
-  }
-});
+app.use("/api/storeZoneOne", storeZoneOneRouter);
+app.use("/api/storeZoneInRadius", storeZoneInRadiusRouter);
+app.use("/api/storeZoneInRectangle", storeZoneInRectangleRouter);
+app.use("/api/storeZoneInAdmi", storeZoneInAdmiRouter);
+app.use("/api/storeOne", storeOneRouter);
+app.use("/api/storeListInBuilding", storeListInBuildingRouter);
+app.use("/api/storeListInPnu", storeListInPnuRouter);
+app.use("/api/storeListInDong", storeListInDongRouter);
+app.use("/api/storeListInArea", storeListInAreaRouter);
+app.use("/api/storeListInRadius", storeListInRadiusRouter);
+app.use("/api/storeListInRectangle", storeListInRectangleRouter);
+app.use("/api/storeListInPolygon", storeListInPolygonRouter);
+app.use("/api/storeListInUpjong", storeListInUpjongRouter);
+app.use("/api/storeListByDate", storeListByDateRouter);
+app.use("/api/reqStoreModify", reqStoreModifyRouter);
+app.use("/api/largeUpjongList", largeUpjongListRouter);
+app.use("/api/middleUpjongList", middleUpjongListRouter);
+app.use("/api/smallUpjongList", smallUpjongListRouter);
+app.use("/api/baroApi", baroApiRouter);
 
 app.listen(3000, () => {
-  console.log(
-    "서버 실행 중: http://localhost:3000/soso?key=9174&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D&type=xml"
-  );
+  console.log("서버 실행 중: http://localhost:3000");
 });
