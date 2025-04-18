@@ -36,6 +36,6 @@ app.get("/soso/api", async (req: Request, res: Response) => {
 
 app.listen(3000, () => {
   console.log(
-    "soso-git-main-suyoungs-projects-456fbfc4.vercel.app/soso?key=9174&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D&type=xml"
+    "http://soso-git-main-suyoungs-projects-456fbfc4.vercel.app/soso?key=9174&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D&type=xml"
   );
 });
