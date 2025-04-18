@@ -10,9 +10,9 @@ app.get("/soso/api", async (req: Request, res: Response) => {
     req.query;
 
   if (
-    !key ||
-    !serviceKey ||
-    !type ||
+    !key 
+    !serviceKey 
+    !type
   ) {
     return res.status(400).json({ message: "Missing required query params" });
   }
