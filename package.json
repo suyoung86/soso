@@ -16,6 +16,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/node": "^22.14.1"
   }
 }
