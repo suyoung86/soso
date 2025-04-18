@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 app.use(cors()); // CORS 에러 방지용 (프론트와 연동 시 필요)
 
-app.get("/weather", async (req: Request, res: Response) => {
+app.get("/soso", async (req: Request, res: Response) => {
   const { Key, serviceKey, type } =
     req.query;
 
