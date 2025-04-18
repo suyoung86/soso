@@ -3,7 +3,7 @@ import axios from "axios";
 
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/soso/api/routes", async (req: Request, res: Response) => {
   const { serviceKey, resId, catId, signguCd, type } = req.query;
 
   if (!serviceKey || !resId || !catId || !signguCd || !type) {
