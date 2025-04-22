@@ -11,7 +11,7 @@ router.get("/soso", async (req: Request, res: Response) => {
   }
 
   try {
-    const result = await handleOperation(operation, rest);
+    const result = await handleOperation(operation, ...rest);
     res.set("Content-Type", result.contentType);
     res.send(result.data);
   } catch (error: any) {
