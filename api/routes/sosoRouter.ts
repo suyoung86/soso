@@ -3,7 +3,7 @@ import { handleOperation } from "../services/sosoDispatcher";
 
 const router = Router();
 
-router.get("/soso/api/services", async (req: Request, res: Response) => {
+router.get("/data", async (req: Request, res: Response) => {
   const { operation, ...rest } = req.query;
 
   if (!operation || typeof operation !== "string") {
