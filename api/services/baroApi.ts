@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchBaroapi = async (query: any) => {
+export const fetchbaroapi = async (query: any) => {
   const url = "http://apis.data.go.kr/B553077/api/open/sdsc2/baroApi";
   const response = await axios.get(url, {
     params: query,
