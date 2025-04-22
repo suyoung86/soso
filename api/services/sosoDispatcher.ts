@@ -21,12 +21,11 @@ import { fetchstoreZoneOne } from "./storeZoneOne";
 interface Query {
   operation?: string;     // 오퍼레이션 구분 (선택)
   key?: string;           // 사용자 구분 키 (선택)
-  serviceKey?: string;    // API 인증 키 (대소문자 혼용되는 경우도 있으므로 보존)
+  serviceKey: string;    // API 인증 키 (대소문자 혼용되는 경우도 있으므로 보존)
 
   // 공통 필수 항목
-  servicekey: string;     // API 인증 키
-  key: string;            // 구분 키
-  type: string;           // 응답 형식 ("json", "xml")
+
+  type?: string;           // 응답 형식 ("json", "xml")
 
   // 산업 분류
   indsLclsCd?: string;
