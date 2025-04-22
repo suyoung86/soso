@@ -6,25 +6,29 @@ const app = express();
 app.use(cors()); 
 
 app.get("/soso", async (req: Request, res: Response) => {
-  const { key, serviceKey, type } = req.query;
+  const { serviceKey, radius, cx, cy, type } = req.query;
 
   if (
-    !key ||
     !serviceKey ||
+    !radius ||
+    !cx ||
+    !cy ||
     !type
   ) {
     return res.status(400).json({ message: "Missing required query params" });
   }
 
   const api_url =
-    "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneOne";
+    "http://apis.data.go.kr/B553077/api/open/sdsc2/storeZoneInRadius";
 
   try {
     const response = await axios.get(api_url, {
       params: {
-        key,
         serviceKey,
-        type,
+        radius, 
+        cx, 
+        cy, 
+        type
       },
       responseType: "text", 
     });
@@ -39,6 +43,6 @@ app.get("/soso", async (req: Request, res: Response) => {
 
 app.listen(3000, () => {
   console.log(
-    "서버 실행 중: http://localhost:3000/soso?key=9174&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D&type=xml"
+    "서버 실행 중: http://localhost:3000/soso?radius=500&cx=127.004528&cy=37.567538&serviceKey=zWJZJMGi7kBIlToG%2FGVb4RpeALKnhLOKl6B0XRnr%2Bs2w2WtifQ1c8ktURng7cT9gtnNh%2FjkBOrSD0rBqE2mPlA%3D%3D"
   );
 });
