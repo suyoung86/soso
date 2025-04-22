@@ -19,37 +19,24 @@ import { fetchstoreZoneInRectangle } from "./storeZoneInRectangle";
 import { fetchstoreZoneOne } from "./storeZoneOne";
 
 interface Query {
-  operation?: string;     // 오퍼레이션 구분 (선택)
-  key?: string;           // 사용자 구분 키 (선택)
-  servicekey: string;    // API 인증 키 (대소문자 혼용되는 경우도 있으므로 보존)
-
-  // 공통 필수 항목
-  type?: string;           // 응답 형식 ("json", "xml")
-
-  // 산업 분류
+  operation?: string;    
+  key?: string;           
+  servicekey: string;    
+  type?: string;        
   indsLclsCd?: string;
   indsMclsCd?: string;
   indsSclsCd?: string;
-
-  // 페이징
   numOfRows?: number;
   pageNo?: number;
-
-  // 행정 구분
   divId?: string;
-
-  // 공간 좌표 기반 (사각형 영역)
   minx?: number;
   miny?: number;
   maxx?: number;
   maxy?: number;
-
-  // 공간 좌표 기반 (반경)
   radius?: number;
   cx?: number;
   cy?: number;
-
-  [key: string]: any; // 유연한 확장 가능성 고려
+  [key: string]: any; 
 }
 
 export const handleOperation = async (query: Query) => {
