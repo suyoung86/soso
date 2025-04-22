@@ -24,7 +24,6 @@ interface Query {
   servicekey: string;    // API 인증 키 (대소문자 혼용되는 경우도 있으므로 보존)
 
   // 공통 필수 항목
-
   type?: string;           // 응답 형식 ("json", "xml")
 
   // 산업 분류
@@ -51,8 +50,6 @@ interface Query {
   cy?: number;
 
   [key: string]: any; // 유연한 확장 가능성 고려
-}
-
 }
 
 export const handleOperation = async (query: Query) => {
