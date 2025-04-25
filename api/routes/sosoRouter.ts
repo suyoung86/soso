@@ -1,9 +1,9 @@
-import { Router, Request, Response } from "express";
+import express, { Router, Request, Response } from "express";
 import { handleOperation } from "../services/sosoDispatcher";
 
 const router = Router();
 
-router.get("/soso/api", async (req: Request, res: Response) => {
+router.get("/soso/api", async (req: Request, res: Response): Promise<void> => {
   const { operation, ...rest } = req.query;
 
   if (!operation || typeof operation !== "string") {
