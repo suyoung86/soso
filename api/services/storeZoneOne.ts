@@ -8,7 +8,7 @@ export const fetchstoreZoneOne = async (query: any) => {
   const response = await axios.get(url, {
     params: {
       // 만약 외부 API가 'ServiceKey'라는 이름을 요구하면 키 이름 변경
-      ServiceKey: query.servicekey,
+      servicekey: query.servicekey,
       ...query,  // 나머지 파라미터 그대로 전달
     },
     responseType: "text",
