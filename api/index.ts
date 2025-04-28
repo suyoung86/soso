@@ -5,6 +5,7 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+import serverlessExpress from '@vendia/serverless-express'; // ✅ 이거 사용
 import sosoRouter from "./routes/sosoRouter"; // ✅ 상대경로 수정
 
 const app = express();
@@ -16,6 +17,4 @@ app.use(express.json()); // ✅ Body 파싱 추가 (필수는 아님)
 // API 라우터 연결
 app.use("/soso", sosoRouter);
 
-// ✅ app.listen() 절대 호출하면 안 됨
-// 대신 app 객체를 export
-export default app;
+export const handler = serverlessExpress({ app });
