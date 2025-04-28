@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import sosoRouter from "./routes/sosoRouter";
+import dotenv from "dotenv"; // 추가 ✅
+
+dotenv.config(); // 추가 ✅
 
 const app = express();
 const PORT = process.env.PORT || 3000;
