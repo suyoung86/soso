@@ -8,7 +8,7 @@ const router = Router();
 // 기존 router.get("/soso", ...)를 router.get("/", ...)로 수정
 router.get("/", async (req: Request, res: Response) => {
   // operation 추출
-  const { operation, servicekey, ...rest } = req.query;
+  const { operation, ServiceKey, servicekey, ...rest } = req.query;
 
   // 필수 operation 체크
   if (!operation || typeof operation !== "string") {
@@ -20,7 +20,7 @@ router.get("/", async (req: Request, res: Response) => {
   if (SERVICE_KEY_ENV) {
     // 환경변수에 키가 있으면 해당 값을 사용
     rest.servicekey = SERVICE_KEY_ENV;
-  } else if (servicekey) {
+  } else if (servicekey || ServiceKey) {
     // 요청에 ServiceKey (대문자)나 servicekey (소문자)가 있다면 통일하여 사용
     rest.servicekey = servicekey;
   }
