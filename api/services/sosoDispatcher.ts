@@ -20,7 +20,8 @@ import { fetchstoreZoneOne } from "./storeZoneOne";
 
 interface Query {
   operation?: string;    
-  key?: string;           
+  key?: string;         
+  [key: string]: any;   
   servicekey: string;    
   type?: string;        
   indsLclsCd?: string;
@@ -36,7 +37,7 @@ interface Query {
   radius?: number;
   cx?: number;
   cy?: number;
-  [key: string]: any; 
+
 }
 
 export const handleOperation = async (operation: string, query: any) => {
