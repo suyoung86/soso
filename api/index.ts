@@ -1,20 +1,16 @@
-// api/index.ts
-
-import dotenv from "dotenv"; // ✅ 환경변수 로딩
+import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import serverlessExpress from '@vendia/serverless-express'; // ✅ 이거 사용
-import sosoRouter from "./routes/sosoRouter"; // ✅ 상대경로 수정
+import serverlessExpress from '@vendia/serverless-express';
+import sosoRouter from "./routes/sosoRouter"; 
 
 const app = express();
 
-// 미들웨어 등록
 app.use(cors());
-app.use(express.json()); // ✅ Body 파싱 추가 (필수는 아님)
+app.use(express.json()); 
 
-// API 라우터 연결
-app.use("/soso", sosoRouter);
+app.use("/soso/api/routes", sosoRouter);
 
 export const handler = serverlessExpress({ app });
