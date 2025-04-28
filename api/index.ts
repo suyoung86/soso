@@ -13,4 +13,4 @@ app.use(express.json());
 
 app.use("/", sosoRouter);
 
-export const handler = serverlessExpress({ app });
+export default serverlessExpress({ app });
