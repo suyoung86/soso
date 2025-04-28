@@ -40,7 +40,6 @@ interface Query {
 }
 
 export const handleOperation = async (operation: string, query: any) => {
-  const { operation } = query;
 
   if (!operation) throw { message: "operation 파라미터가 필요합니다", status: 400 };
 
