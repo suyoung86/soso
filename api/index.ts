@@ -3,7 +3,7 @@ dotenv.config(); // 추가 ✅import express from "express";
 
 import express from "express";
 import cors from "cors";
-import sosoRouter from "../routes/sosoRouter";
+import sosoRouter from "./routes/sosoRouter";
 
 
 const app = express();
