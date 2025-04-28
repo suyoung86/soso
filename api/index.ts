@@ -5,7 +5,7 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import sosoRouter from "../routes/sosoRouter"; // ✅ 상대경로 수정
+import sosoRouter from "./routes/sosoRouter"; // ✅ 상대경로 수정
 
 const app = express();
 
