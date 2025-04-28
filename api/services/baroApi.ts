@@ -1,7 +1,7 @@
 import axios from "axios";
 import { validateParams } from "../utils/validateParams";
 
-export const fetchbaroapi = async (query: any) => {
+export const fetchbaroApi = async (query: any) => {
   validateParams(query, ["servicekey", "resId", "catId", "signguCd", "type"]);
 
   const url = "http://apis.data.go.kr/B553077/api/open/sdsc2/baroApi";
