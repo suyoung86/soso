@@ -11,6 +11,6 @@ const app = express();
 app.use(cors());
 app.use(express.json()); 
 
-app.use("/soso/api/routes", sosoRouter);
+app.use("/", sosoRouter);
 
 export const handler = serverlessExpress({ app });
