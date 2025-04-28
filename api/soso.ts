@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleOperation } from '../services/sosoDispatcher';
+import { handleOperation } from './services/sosoDispatcher';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { operation, servicekey, ServiceKey, ...rest } = req.query;
