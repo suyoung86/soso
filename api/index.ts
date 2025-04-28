@@ -3,7 +3,6 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import serverlessExpress from '@vendia/serverless-express';
 import sosoRouter from "./routes/sosoRouter"; 
 
 const app = express();
@@ -11,6 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json()); 
 
-app.use("/", sosoRouter);
+app.use("/soso", sosoRouter);
 
-export default serverlessExpress({ app });
+export default app;
