@@ -1,6 +1,6 @@
 export const validatestoreOne = (query: any) => {
-    const { servicekey, key, type } = query;
-    if ( !servicekey || !key || !type ) {
+    const { key, type } = query;
+    if ( !key || !type ) {
       throw { message: "storeOne에 필요한 파라미터가 부족합니다", status: 400 };
     }
   };
