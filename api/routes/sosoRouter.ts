@@ -22,7 +22,7 @@ router.get("/", async (req: Request, res: Response) => {
     rest.servicekey = SERVICE_KEY_ENV;
   } else if (servicekey || ServiceKey) {
     // 요청에 ServiceKey (대문자)나 servicekey (소문자)가 있다면 통일하여 사용
-    rest.servicekey = servicekey;
+    rest.servicekey = servicekey || ServiceKey;
   }
 
   try {
