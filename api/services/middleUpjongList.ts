@@ -2,7 +2,7 @@ import axios from "axios";
 import { validateParams } from "../utils/validateParams";
 
 export const fetchmiddleUpjongList = async (query: any) => {
-  validateParams(query, ["servicekey", "resId", "catId", "type"]);
+  validateParams(query, ["servicekey", "indsLclsCd"]);
 
   const url = "http://apis.data.go.kr/B553077/api/open/sdsc2/middleUpjongList";
   

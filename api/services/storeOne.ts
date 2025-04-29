@@ -2,7 +2,7 @@ import axios from "axios";
 import { validateParams } from "../utils/validateParams";
 
 export const fetchstoreOne = async (query: any) => {
-  validateParams(query, ["servicekey", "key", "type"]);
+  validateParams(query, ["servicekey", "key"]);
 
   const url = "http://apis.data.go.kr/B553077/api/open/sdsc2/storeOne";
 
